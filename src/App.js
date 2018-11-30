@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from "react-router-dom";
+
+//Functional COmponents
+import Header from './components/Header';
+import LandingPage from './components/LandingPage';
+import NotFound from './components/NotFound';
+
+//ClassBased Components
+import Products from './containers/Products';
+import ViewProduct from './containers/ViewProduct';
+import CreateProduct from './containers/CreateProduct';
+
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Header/>
+      <main className="container">
+
+      <Switch>
+        <Route exact path="/" component={LandingPage}/>
+        <Route exact path="/products" component={Products}/>
+        <Route exact path="/products/create" component={CreateProduct}/>
+        <Route exact path="/products/:id" component={ViewProduct}/>
+        <Route  path="*" component={NotFound}/>
+      </Switch>
+       {/* <LandingPage/> */}
+      </main>
       </div>
     );
   }
