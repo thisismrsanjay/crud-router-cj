@@ -1,4 +1,4 @@
-## https://thisismrsanjay.github.io/crud-router-cj
+## https://thisismrsanjay.github.io/crud-router-cj/
 
 ![git hub ](https://github.com/thisismrsanjay/crud-router-cj/blob/master/Capture.PNG)
 
