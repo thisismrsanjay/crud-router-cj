@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 import {getProduct} from '../API';
+import {deleteProduct} from '../API';
 import Product from '../components/Product';
 
 class ViewProduct extends Component {
@@ -19,16 +21,22 @@ class ViewProduct extends Component {
             })
 
     }
+    deleteProduct=()=>{
+        deleteProduct(this.state.product.id)
+            .then(()=>{
+                this.props.history.push('/products');
+            })
+    }
 
     render() {
 
         return (
             this.state.isLoading ?
                 <h2>Loading Product...</h2> :
-                <Product product={this.state.product} cols="col-12" showStock={true} showEdit={true}/>
+                <Product deleteProduct={this.deleteProduct} product={this.state.product} cols="col-12" showStock={true} showEdit={true}/>
             
         )
     }
 }
 
-export default ViewProduct;
+export default withRouter(ViewProduct);
